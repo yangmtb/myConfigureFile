@@ -1,0 +1,68 @@
+general {
+        output_format = "i3bar"
+	colors = true
+	color_good = "#BBBBBB"
+	color_bad = "#CC1616"
+	color_degraded = "#55858E"
+	interval = 1
+}
+
+order += "sysdata"
+order += "cpu_usage"
+order += "net_rate"
+order += "time"
+#order += "tztime"
+order += "volume_status"
+order += "static_string screenshot"
+
+sysdata {
+        format = "mem {mem_used}G {mem_used_percent}%"
+	color = "#48CCCD"
+}
+
+cpu_usage {
+        format = "cpu %usage"
+	color = "#52D017"
+}
+
+net_rate {
+        interfaces = "enp0s3"
+	format = "down {down} up {up}"
+	color = "#FFDB58"
+}
+
+time {
+        format = "%Y-%m-%d %H:%M:%S"
+	#TZ = {GMT}
+	color = "#9E7BFF"
+}
+
+#tztime shanghai {
+#    format = "<span foreground='ffffff'>%time</span>"
+#    format_time = "%H:%M %Z"
+#    timezone = "Asia/Shanghai"
+#}
+
+volume_status {
+        format = "vol {percentage}%"
+	device = "default"
+	thresholds = [
+	    (0, "#A0CFEC"),
+	    (10, "#82CAFF"),
+	    (20, "#79BAEC"),
+	    (30, "#3BB9FF"),
+	    (40, "#56A5EC"),
+	    (50, "#5CB3FF"),
+	    (60, "#1589FF"),
+	    (70, "#157DEC"),
+	    (80,"#306EFF"),
+	    (90,"#2B65EC")
+	]
+}
+
+static_string 'screenshot' {
+        format = "shot"
+	        on_click 1 = "exec gnome-screenshot"
+		color = "#C44975"
+}
+
