@@ -46,11 +46,21 @@ bindsym $mod+w kill
 bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+r exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+
+# system operation
+set $mode_system 注销(O) 关机(S) 重启(R) 取消(Esc)
+bindsym $mod+shift+q mode "$mode_system"
+mode "$mode_system" {
+     bindsym o exec i3-msg exit
+     bindsym s exec systemctl poweroff
+     bindsym r exec systemctl reboot
+     bindsym Escape mode "default"
+}
 
 # change focus
 bindsym $mod+j focus left
@@ -182,7 +192,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id feh --bg-center /home/man/bg/bg.jpg
+# 添加窗口到存储
+bindsym $mod+minus move scratchpad
+
+# 切换存储器中的窗口
+bindsym Mod1+minus scratchpad show
+
+#exec_always --no-startup-id feh --bg-center /home/man/bg/bg.jpg
 exec --no-startup-id compton -b
 
 # Start i3bar to display a workspace bar (plus the system information i3status
