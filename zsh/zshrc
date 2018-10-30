@@ -65,7 +65,7 @@ plugins=(
   git
   golang
   archlinx
-  emacs
+#  emacs
 )
 
 source $ZSH/oh-my-zsh.sh
