@@ -182,7 +182,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-exec_always --no-startup-id feh --bg-center /home/man/bg/bg.jpg
+exec_always --no-startup-id feh --bg-center /home/spiderman/bg/bg.jpg
 exec --no-startup-id compton -b
 
 # scratchpad save

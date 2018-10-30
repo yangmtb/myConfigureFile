@@ -65,14 +65,14 @@ plugins=(
   git
   golang
   archlinx
-  emacs
+#  emacs
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export GOPATH=/home/superman/go:/home/superman/everyday/go
+export GOPATH=/home/spiderman/go:/home/spiderman/everyday/go
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
