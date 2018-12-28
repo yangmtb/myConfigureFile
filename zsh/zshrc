@@ -16,7 +16,6 @@ ZSH_THEME=random
 # cause zsh load theme from this variable instead of
 # looking in ~/.oh-my-zsh/themes/
 # An empty array have no effect
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 #ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "smt" "muse" )
 
 # Uncomment the following line to use case-sensitive completion.
@@ -65,14 +64,14 @@ plugins=(
   git
   golang
   archlinx
-#  emacs
+  emacs
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-export GOPATH=/home/spiderman/go:/home/spiderman/everyday/go
+#export PATH=~/go/bin:$PATH
+export GOPATH=~/go:~/everyday/go
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
