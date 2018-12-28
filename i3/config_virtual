@@ -5,11 +5,11 @@
 # this file and re-run i3-config-wizard(1).
 #
 
-# i3 config file (v4)
+# i3 配置文件
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# set $mod
+# set $mod 为 windows键
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -21,13 +21,6 @@ font pango:Source Code Pro 14
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
-
 # fcitx
 exec --no-startup-id fcitx
 
@@ -37,9 +30,12 @@ focus_follows_mouse no
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-##==========加RET启动终端==========##
+##==========windows加RET启动终端==========##
 bindsym $mod+Return exec terminator
+
+## 背景
+exec_always --no-startup-id feh --bg-center /home/spiderman/bg/bg.jpg
+exec --no-startup-id compton -b
 
 # kill focused window
 bindsym $mod+w kill
@@ -57,8 +53,6 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -69,17 +63,13 @@ bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
 bindsym $mod+Shift+semicolon move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# split in horizontal orientation, split in vertical orientation
 bindsym $mod+h split h
-
-# split in vertical orientation
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
@@ -96,12 +86,6 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
-# focus the parent container
-#bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
-
 #===============音量控制===============
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q sset Master 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
@@ -110,11 +94,11 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q sset Master 5%-
 # We use variables to avoid repeating the names in multiple places.
 set $ws1  1:  
 set $ws2  2:  
-set $ws3  3:  
-set $ws4  4:  
+set $ws3  3:  
+set $ws4  4:  
 set $ws5  5:  
-set $ws6  6:  
-set $ws7  7:  
+set $ws6  6: 
+set $ws7  7: 
 set $ws8  8:  
 set $ws9  9:  
 set $ws0 10:  
@@ -162,32 +146,26 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym l resize shrink height 5 px or 5 ppt
+        bindsym semicolon resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
-
-
 bindsym $mod+r mode "resize"
-
-exec_always --no-startup-id feh --bg-center /home/spiderman/bg/bg.jpg
-exec --no-startup-id compton -b
 
 # scratchpad save
 bindsym $mod+minus move scratchpad
-
 # scratchpad show
 bindsym Mod1+minus scratchpad show
 
@@ -195,16 +173,17 @@ bindsym Mod1+minus scratchpad show
 # finds out, if available)
 bindsym $mod+m bar mode toggle
 bar {
-  #status_command i3status
-	status_command conky -c ~/.config/i3status/conkyrc_top
-	position top
-  #mode hide
-  #hidden_state hide
-  #modifier Mod1
-  #align left
-  workspace_buttons yes
-	strip_workspace_numbers yes
-	colors {
+    #status_command i3status
+    status_command conky -c ~/.config/i3status/conkyrc_top
+    position top
+    #mode hide
+    #hidden_state hide
+    #modifier Mod1
+    #align left
+    separator_symbol "|"
+    workspace_buttons yes
+    strip_workspace_numbers yes
+    colors {
         background #333333
         statusline #FFFFFF
         #eparator  #3399FF
@@ -235,7 +214,6 @@ bar {
     strip_workspace_numbers yes
     # 定义分隔符∥
     separator_symbol "    "
-
     colors {
         background #333333
         statusline #FFFFFF
