@@ -67,6 +67,9 @@ plugins=(
   emacs
 )
 
+# not share history in every terminal session
+unsetopt share_history
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
